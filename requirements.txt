@@ -1,0 +1,5 @@
+flask
+nltk
+flask_sqlalchemy
+flask_mail
+datetime

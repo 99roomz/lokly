@@ -1,0 +1,44 @@
+<style>
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+th{
+font-size:20px;
+color:white;
+}
+
+td{
+font-size:18px;
+}
+
+tr{
+border: 1px solid #dddddd;
+}
+
+td, th {
+  
+  text-align: left;
+  padding: 8px;
+  width:50%;
+  style=padding: 5px 15px 5px 15px;
+}
+
+</style>
+
+<table >
+  <tr style='background-color:#009688;'>
+    <th>Category</th>
+    <th>Element</th>
+  </tr>
+ {% for key, value in result.items() %}
+	{% if value != '' %}
+		<tr>
+		  <td> {{ key }} </th>
+		  <td> {{ value }} </td>
+		</tr>
+    {% endif %}
+  {% endfor %}
+</table>

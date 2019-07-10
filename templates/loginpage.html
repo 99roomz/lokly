@@ -1,0 +1,450 @@
+<html>
+
+   <head>
+
+   </head>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html {
+  scroll-behavior: smooth;
+}
+	
+	
+body{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  background-size: 100% 500px;
+  padding:0;
+  margin:0;
+  background-attachment: fixed;
+  font-family: Roboto;
+  font-size:120%;
+  color:#000000;
+  
+}
+
+
+
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: center;
+  width: 90%;
+  <!-- border: 3px solid #00B4CC; -->
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: bold;
+  outline: none;
+  border:1px solid #dddddd;
+  <!-- color: #9DBFAF; -->
+  color:black;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+
+.nextButton {
+  position: absolute;  
+  width: 30%;
+  top: 80%;
+  right:3%;
+  height: 8%;
+  border: 1px solid #00B4CC;
+  background: #009688;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.loginButton {
+  position: absolute;  
+  width: 40%;
+  left: 0%;
+  top:80%;
+  padding:0;
+  height: 8%;
+  border: 0px;
+  background: none;
+  text-align: center;
+  color: blue;
+  border-radius: 0px;
+  cursor: pointer;
+  font-size: 20px;
+    font-family: 'Roboto';
+}
+
+.loginbarButton {
+  position: absolute;  
+  width: 5%;
+  left: 88%;
+  top:2%;
+  padding:0;
+  height: 4%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  cursor: pointer;
+  font-size: 20px;
+    font-family: 'Roboto';
+}
+
+.signupbarButton {
+  position: absolute;  
+  width: 6%;
+  left: 93%;
+  top:2%;
+  height: 4%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  cursor: pointer;
+    font-family: 'Roboto';
+  font-size: 20px;
+  padding:0;
+  
+}
+
+
+.homebarButton {
+  position: absolute;  
+  width: 4%;
+  left: 1%;
+  top:2%;
+  height: 4%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  cursor: pointer;
+    font-family: 'Roboto';
+  font-size: 20px;
+  padding:0;
+  
+}
+
+
+.welcome {
+  position: absolute;  
+  left: 2%;
+  top:0%;
+  height: 4%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  cursor: pointer;
+
+  font-size: 20px;
+}
+
+#bottom_link{
+   position:absolute;                  /* added */
+   bottom:10%;                           /* added */
+                          /* added */
+}
+
+
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  margin-left:45%;
+  position:relative;
+  align:center;
+  float:center;
+  border-top: 16px solid #3498db;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*Resize the wrap to see the search bar change!*/
+}
+.wrap{
+  width: 80%;
+  position: relative;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+a{
+	color : white;
+	text-decoration: none;
+}
+
+
+
+/*Resize the wrap to see the head change!*/
+.head{
+  width: 100%;
+  position: relative;
+  text-align: center;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+div {
+    display: block;
+}
+#wrapper {
+
+    width: 100%;
+    height:100%;
+}
+
+
+#first {
+	border:1px solid #dddddd;
+	border-radius:20px;
+	position:relative;
+    float:center;
+    width: 30%;
+	top:20%;
+    height: 60%;
+	margin-left:35%;
+}
+
+
+#third {
+	position:fixed;
+    width: 100%;
+	bottom:0%;
+    height: 6%;
+	background: #009688 ;
+}
+
+.round{
+  border-radius: 8px 8px 8px 8px;
+
+}
+
+.fontRoboto{
+font-family: Roboto;
+}
+
+
+
+
+
+</style>
+	<a href="\"> <button type="submit" class="homebarButton">Lokly</button></a>
+   <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
+   <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
+<div class='fontRoboto'>
+   <body align='center'>
+   <div id="wrapper">
+    <div id="first">
+		    <h1>Login</h1>
+
+      <div class="wrap">	
+	<!-- <div  id="myVar" name="variable" style="display:None;" >Guest</div>	   -->
+
+			<div class="search">
+			<br>
+			<br>
+			<input type="text" style=' color:black; font-size:90% ;padding-left: 12px;' class="searchTerm round fontRoboto" placeholder="Enter email id" name="email_login" id="email_login">
+			<input type="text" style=' color:black; font-size:90% ;padding-left: 12px; display: none;' class="searchTerm round fontRoboto"  placeholder="Enter OTP" name="otp_login" id="otp_login">
+			<br>
+			<br>
+			<!-- <button type="submit" class="resetButton" id='Login' style="display:None;">Login</button> -->
+		<div id='Login_error' ></div>
+
+			</div>		
+				</div>
+			<button type="submit" class="nextButton" id='Login' style="display: none;">Login</button>
+			<button type="submit" class="nextButton" id='send_otp'>Next</button>
+				  <div id='loading' class='loader' style="display: none;"></div>
+			<a href="\signup" ><button type="submit" class="loginButton" id='signup'>Create Account</button></a>
+
+				</div>		
+				<br>
+			<br>
+
+			<br>
+			<br>
+
+	</div>
+	  </div>
+	  <div id='third' >
+	  <div style='padding-top:0.5%; '>
+		<a href='' style='padding-right:10%; '>About Us</a><a href='' style='padding-right:10%'>Contact Us</a><a href=''>About Us</a>
+	  </div>
+				</div>		
+      <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+      $('button#Parse').click(function(){
+	    $('div#Address_output').html('');
+		if (document.getElementById('search').value=='')
+		{
+		}
+		else
+		{
+
+	    $('#Address_error').hide();
+	    $('#loading').show();
+		$('#Search_Another').hide();
+
+		<!-- window.location.hash = '#response'; -->
+        $.ajax({
+			url: "/_get_data?address="+document.getElementById('search').value+"&user_id="+$('#myVar').html(),
+            type: "GET",
+            success: function(resp){
+				if (resp.data)
+				{
+				<!-- $('#Address_error').html(resp.data); -->
+				<!-- $('#Address_error').show(); -->
+                <!-- $('img#loading').hide(); -->
+				<!-- document.getElementById('Address_error').scrollIntoView(); -->
+				<!-- $('#Search_Another').(); -->
+				
+				}				
+				else				
+				{
+				$('#Address_error').hide();
+				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
+                $('div#Address_output').html(resp.Parsed_address);
+				$('#Address_output').show();
+				$('#Search_Another').show();
+            }
+				    $('#loading').hide();
+			}			
+        });}
+      });
+		$('button#Reset').click(function(){
+                $('div#Address_output').html('');
+				document.getElementById("search").value = '';
+      });
+      $('button#Login').click(function(){
+        $.ajax({
+            url: "/login_via_otp?otp_login="+document.getElementById('otp_login').value+"&user_id="+sessionStorage.getItem("login_user"),
+            type: "GET",
+            success: function(resp){
+				if (resp.data)
+				{
+				$('#Login_error').html(resp.data);
+				$('#Login_error').show();
+				
+				}				
+				else				
+				{
+				sessionStorage.setItem("app_user",resp.id);
+				window.location.href = '\\';
+				document.getElementById("email_login").value = '';
+				document.getElementById("otp_login").value = '';
+				<!-- $('#Welcome').html('Welcome '+resp.name); -->
+				<!-- $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. '); -->
+				<!-- $('#signup').hide(); -->
+				<!-- $('#Welcome').show(); -->
+				<!-- $('#SignText').hide(); -->
+				<!-- $('#login_text').hide(); -->
+				<!-- $('#send_otp').hide(); -->
+				<!-- $('#Login_error').hide(); -->
+				<!-- $('#Login').hide(); -->
+				<!-- $('#email_login').hide(); -->
+				<!-- $('#otp_login').hide(); -->
+				<!-- $('#Logout').show(); -->
+				}
+
+
+            }
+        });
+      });
+	  $('button#send_otp').click(function(){
+			$('#loading').show();
+			$('#Login_error').show();
+        $.ajax({
+            url: "/send_otp_to_login?email_login="+document.getElementById('email_login').value,
+            type: "GET",
+            success: function(resp){
+				if (resp.data)
+				{
+				$('#Login_error').html(resp.data);
+				$('#Login_error').show();
+				}				
+				else				
+				{
+				sessionStorage.setItem("login_user",resp.id);
+				$('#Login_error').html('OTP has been sent to '+document.getElementById('email_login').value);
+				$('#Login_error').show();
+
+				$('#myVar').html(resp.id);
+				$('#Login').show();
+				$('#send_otp').hide();
+				$('#otp_login').show();
+				$('#email_login').hide();
+				}
+				$('#loading').hide();
+
+
+            }
+        });
+      });
+
+      $('button#Logout').click(function(){
+       $.ajax({
+            url: "/_logout",
+            type: "GET",
+            success: function(resp){
+				var user =  $('#myVar').html(); 
+				sessionStorage.setItem("app_user",'Guest');
+				$('#myVar').html('Guest');
+				$('#Welcome').hide();
+				$('#searches').html('You have counsumed '+resp.queries+' out of '+resp.limit+' searches.');
+				$('#signup').show();
+				$('#SignText').show();
+				$('#login_text').show();
+				$('#send_otp').show();
+				$('#Logout').hide();
+				<!-- $('#Login').show(); -->
+				$('#email_login').show();
+				$('#otp_login').hide();
+				document.getElementById("contact_login").value = '';
+				document.getElementById("password_login").value = '';
+				$('#Logout').hide();
+            
+            }
+        });
+      });
+
+
+
+  </script>
+  </body>
+   
+</html>
