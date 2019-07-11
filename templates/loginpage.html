@@ -1,7 +1,18 @@
 <html>
 
    <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-143664123-1');
+</script>
+<title>
+Login to Lokly
+</title>
    </head>
 	<style>
 		@import url(https://fonts.googleapis.com/css?family=Roboto);
@@ -35,7 +46,6 @@ body{
 .searchTerm {
   float: center;
   width: 90%;
-  <!-- border: 3px solid #00B4CC; -->
   padding: 5px;
   height: 40px;
   border-radius: 5px;
@@ -43,7 +53,6 @@ body{
   font-size: bold;
   outline: none;
   border:1px solid #dddddd;
-  <!-- color: #9DBFAF; -->
   color:black;
 }
 
@@ -59,7 +68,7 @@ body{
   right:3%;
   height: 8%;
   border: 1px solid #00B4CC;
-  background: #009688;
+  background: #16B647;
   text-align: center;
   color: #fff;
   border-radius: 5px;
@@ -85,9 +94,8 @@ body{
 }
 
 .loginbarButton {
-  position: absolute;  
-  width: 5%;
-  left: 88%;
+  position: fixed;  
+  right: 8%;
   top:2%;
   padding:0;
   height: 4%;
@@ -97,15 +105,15 @@ body{
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
     font-family: 'Roboto';
 }
 
 .signupbarButton {
-  position: absolute;  
-  width: 6%;
-  left: 93%;
+  position: fixed;  
+  right: 2%;
   top:2%;
+  padding:0;
   height: 4%;
   border: 0px;
   background: #ffffff;
@@ -113,51 +121,41 @@ body{
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
+  font-size: 16px;
     font-family: 'Roboto';
-  font-size: 20px;
-  padding:0;
-  
 }
 
 
 .homebarButton {
-  position: absolute;  
-  width: 4%;
+  position: fixed;  
   left: 1%;
-  top:2%;
-  height: 4%;
+  top:0%;
   border: 0px;
   background: #ffffff;
   text-align: center;
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
-    font-family: 'Roboto';
-  font-size: 20px;
+  font-family: 'Roboto';
+  font-size: 30px;
   padding:0;
   
 }
 
-
-.welcome {
-  position: absolute;  
-  left: 2%;
-  top:0%;
-  height: 4%;
+.namebartext {
+  position: fixed;  
+  right: 8%;
+  top:2.5%;
+  height: 5%;
   border: 0px;
   background: #ffffff;
   text-align: center;
   color: #000000;
   border-radius: 0px;
-  cursor: pointer;
-
-  font-size: 20px;
-}
-
-#bottom_link{
-   position:absolute;                  /* added */
-   bottom:10%;                           /* added */
-                          /* added */
+  font-family: 'Roboto';
+  font-size: 16px;
+  padding:0;
+  
 }
 
 
@@ -199,7 +197,7 @@ body{
 
 
 a{
-	color : white;
+	color : black;
 	text-decoration: none;
 }
 
@@ -242,7 +240,7 @@ div {
     width: 100%;
 	bottom:0%;
     height: 6%;
-	background: #009688 ;
+	background: #D9D9D9 ;
 }
 
 .round{
@@ -259,17 +257,18 @@ font-family: Roboto;
 
 
 </style>
-	<a href="\"> <button type="submit" class="homebarButton">Lokly</button></a>
+   <a href="\"> <button type="submit" class="homebarButton"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></button></a>
    <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
    <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
+   <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
+   <div id='namebar' class="namebartext" style="display: none;"></div>
 <div class='fontRoboto'>
    <body align='center'>
    <div id="wrapper">
     <div id="first">
-		    <h1>Login</h1>
+		    <h2 style='font-size:40;' align='center' class='fontRoboto'> Login </h2>
 
       <div class="wrap">	
-	<!-- <div  id="myVar" name="variable" style="display:None;" >Guest</div>	   -->
 
 			<div class="search">
 			<br>
@@ -278,8 +277,7 @@ font-family: Roboto;
 			<input type="text" style=' color:black; font-size:90% ;padding-left: 12px; display: none;' class="searchTerm round fontRoboto"  placeholder="Enter OTP" name="otp_login" id="otp_login">
 			<br>
 			<br>
-			<!-- <button type="submit" class="resetButton" id='Login' style="display:None;">Login</button> -->
-		<div id='Login_error' ></div>
+		<div id='Login_error' style='font-size:18px' ></div>
 
 			</div>		
 				</div>
@@ -299,7 +297,7 @@ font-family: Roboto;
 	  </div>
 	  <div id='third' >
 	  <div style='padding-top:0.5%; '>
-		<a href='' style='padding-right:10%; '>About Us</a><a href='' style='padding-right:10%'>Contact Us</a><a href=''>About Us</a>
+		<a href='\about' style='padding-right:10%; '>About Us</a><a href='\contact' style='padding-right:10%'>Contact Us</a><a href='\terms'>Terms and Conditions</a>
 	  </div>
 				</div>		
       <script
@@ -308,48 +306,7 @@ font-family: Roboto;
   crossorigin="anonymous"></script>
 
   <script type="text/javascript">
-      $('button#Parse').click(function(){
-	    $('div#Address_output').html('');
-		if (document.getElementById('search').value=='')
-		{
-		}
-		else
-		{
 
-	    $('#Address_error').hide();
-	    $('#loading').show();
-		$('#Search_Another').hide();
-
-		<!-- window.location.hash = '#response'; -->
-        $.ajax({
-			url: "/_get_data?address="+document.getElementById('search').value+"&user_id="+$('#myVar').html(),
-            type: "GET",
-            success: function(resp){
-				if (resp.data)
-				{
-				<!-- $('#Address_error').html(resp.data); -->
-				<!-- $('#Address_error').show(); -->
-                <!-- $('img#loading').hide(); -->
-				<!-- document.getElementById('Address_error').scrollIntoView(); -->
-				<!-- $('#Search_Another').(); -->
-				
-				}				
-				else				
-				{
-				$('#Address_error').hide();
-				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
-                $('div#Address_output').html(resp.Parsed_address);
-				$('#Address_output').show();
-				$('#Search_Another').show();
-            }
-				    $('#loading').hide();
-			}			
-        });}
-      });
-		$('button#Reset').click(function(){
-                $('div#Address_output').html('');
-				document.getElementById("search").value = '';
-      });
       $('button#Login').click(function(){
         $.ajax({
             url: "/login_via_otp?otp_login="+document.getElementById('otp_login').value+"&user_id="+sessionStorage.getItem("login_user"),
@@ -364,21 +321,10 @@ font-family: Roboto;
 				else				
 				{
 				sessionStorage.setItem("app_user",resp.id);
+				sessionStorage.setItem("app_username",resp.name);
 				window.location.href = '\\';
 				document.getElementById("email_login").value = '';
 				document.getElementById("otp_login").value = '';
-				<!-- $('#Welcome').html('Welcome '+resp.name); -->
-				<!-- $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. '); -->
-				<!-- $('#signup').hide(); -->
-				<!-- $('#Welcome').show(); -->
-				<!-- $('#SignText').hide(); -->
-				<!-- $('#login_text').hide(); -->
-				<!-- $('#send_otp').hide(); -->
-				<!-- $('#Login_error').hide(); -->
-				<!-- $('#Login').hide(); -->
-				<!-- $('#email_login').hide(); -->
-				<!-- $('#otp_login').hide(); -->
-				<!-- $('#Logout').show(); -->
 				}
 
 
@@ -402,8 +348,6 @@ font-family: Roboto;
 				sessionStorage.setItem("login_user",resp.id);
 				$('#Login_error').html('OTP has been sent to '+document.getElementById('email_login').value);
 				$('#Login_error').show();
-
-				$('#myVar').html(resp.id);
 				$('#Login').show();
 				$('#send_otp').hide();
 				$('#otp_login').show();
@@ -415,32 +359,27 @@ font-family: Roboto;
             }
         });
       });
-
-      $('button#Logout').click(function(){
-       $.ajax({
-            url: "/_logout",
+	var user = sessionStorage.getItem("app_user");
+	  if (user!='Guest' && user!=null)
+	  {
+        $.ajax({
+            url: "/refresh?&user_id="+user,
             type: "GET",
             success: function(resp){
-				var user =  $('#myVar').html(); 
-				sessionStorage.setItem("app_user",'Guest');
-				$('#myVar').html('Guest');
-				$('#Welcome').hide();
-				$('#searches').html('You have counsumed '+resp.queries+' out of '+resp.limit+' searches.');
-				$('#signup').show();
-				$('#SignText').show();
-				$('#login_text').show();
-				$('#send_otp').show();
-				$('#Logout').hide();
-				<!-- $('#Login').show(); -->
-				$('#email_login').show();
-				$('#otp_login').hide();
-				document.getElementById("contact_login").value = '';
-				document.getElementById("password_login").value = '';
-				$('#Logout').hide();
-            
+				if (resp.data)
+				{
+
+				
+				}				
+				else				
+				{
+				window.location.href = '\\';
+				}
+
+
             }
         });
-      });
+    }; 
 
 
 

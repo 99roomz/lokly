@@ -1,7 +1,18 @@
 <html>
 
    <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-143664123-1');
+</script>
+<title>
+Lokly - Address Intelligence, Indian Address Parser
+</title>
    </head>
 	<style>
 		@import url(https://fonts.googleapis.com/css?family=Roboto);
@@ -35,14 +46,12 @@ body{
 .searchTerm {
   float: center;
   width: 90%;
-  <!-- border: 3px solid #00B4CC; -->
   padding: 5px;
   height: 40px;
   border-radius: 5px;
   font-weight: bold;
   font-size: bold;
   outline: none;
-  <!-- color: #9DBFAF; -->
   color:black;
 }
 
@@ -56,7 +65,7 @@ body{
   bottom: -30px;
   height: 45px;
   border: 1px solid #00B4CC;
-  background: #009688;
+  background: #16B647;
   text-align: center;
   color: #fff;
   border-radius: 5px;
@@ -79,9 +88,8 @@ body{
 }
 
 .loginbarButton {
-  position: absolute;  
-  width: 5%;
-  left: 88%;
+  position: fixed;  
+  right: 8%;
   top:2%;
   padding:0;
   height: 4%;
@@ -91,15 +99,15 @@ body{
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
     font-family: 'Roboto';
 }
 
 .signupbarButton {
-  position: absolute;  
-  width: 6%;
-  left: 93%;
+  position: fixed;  
+  right: 2%;
   top:2%;
+  padding:0;
   height: 4%;
   border: 0px;
   background: #ffffff;
@@ -107,63 +115,58 @@ body{
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
+  font-size: 16px;
     font-family: 'Roboto';
-  font-size: 20px;
-  padding:0;
-  
 }
+
 
 .homebarButton {
-  position: absolute;  
-  width: 4%;
+  position: fixed;  
   left: 1%;
-  top:2%;
-  height: 4%;
+  top:0%;
   border: 0px;
   background: #ffffff;
   text-align: center;
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
-    font-family: 'Roboto';
-  font-size: 20px;
+  font-family: 'Roboto';
+  font-size: 30px;
   padding:0;
   
 }
 
-.welcome {
-  position: absolute;  
-  left: 2%;
-  top:0%;
-  height: 4%;
+.namebartext {
+  position: fixed;  
+  right: 8%;
+  top:2.5%;
+  height: 5%;
   border: 0px;
   background: #ffffff;
   text-align: center;
   color: #000000;
   border-radius: 0px;
-  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 16px;
+  padding:0;
+  
+}	
 
-  font-size: 20px;
-}
-
-#bottom_link{
-   position:absolute;                  /* added */
-   bottom:10%;                           /* added */
-                          /* added */
-}
 
 .loader {
-  border: 16px solid #f3f3f3;
+  border: 16px solid green;
   border-radius: 50%;
   margin-left:45%;
   position:relative;
   align:center;
   float:center;
-  border-top: 16px solid #3498db;
-  width: 80px;
-  height: 80px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
+  border-top: 16px solid brown;
+  border-bottom: 16px solid blue;
+  border-left: 16px solid red;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
 }
 
 /* Safari */
@@ -194,19 +197,24 @@ body{
   text-align: center;
   align: center;
   position: absolute;
-  top: 60%;
+  top: 70%;
   padding-bottom:4%;
   left: 25%;
   font-size:90%;
 }
 
 a{
-	color : white;
+	color : black;
 	text-decoration: none;
 }
 
 
-
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 
 /*Resize the wrap to see the head change!*/
 .head{
@@ -247,12 +255,16 @@ div {
     width: 100%;
 	bottom:0%;
     height: 6%;
-	background: #009688 ;
+	background: #D9D9D9 ;
 }
 
 .round{
   border-radius: 8px 8px 8px 8px;
 
+}
+
+::placeholder {
+  color:D9D9D9;
 }
 
 .fontRoboto{
@@ -266,65 +278,31 @@ font-family: Roboto;
 </style>
 <div class='fontRoboto'>
    <body align='center'>
-   <a href="\"> <button type="submit" class="homebarButton">Lokly</button></a>
    <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
    <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
-			<button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
-   <div class='welcome' style="display:None;"> Guest </div>
+   <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
+   <div id='namebar' class="namebartext" style="display: none;"></div>
    <div id="wrapper">
-    <!-- <div id="first"> -->
-    <!-- <div id="first"> -->
-	<!-- <br> -->
 
-	<!-- <br> -->
-	<!-- <br> -->
-			<!-- <br> -->
-      <!-- <div class="wrap">		 -->
-
-			<!-- <div class="search"> -->
-			<!-- <input type="text"  class="searchTerm" style=' color:black'; placeholder="   Enter email id" name="email_login" id="email_login"> -->
-			<!-- <br> -->
-			<!-- <br> -->
-			<!-- <input type="text"  class="searchTerm" style= 'color:black; display: none;' placeholder="   Enter OTP" name="otp_login" id="otp_login"> -->
-			<!-- <br> -->
-			<!-- <button type="submit" class="parseButton" id='send_otp'>Send OTP</button> -->
-			<!-- <!-- <button type="submit" class="resetButton" id='Login' style="display: none;">Login</button> -->
-			<!-- <button type="submit" class="resetButton" id='Login' style="display:None;">Login</button> -->
-
-			<!-- </div>		 -->
-				<!-- </div> -->
-		<!-- <h1 id='Welcome' style="display:None;"> </h1> -->
-			<!-- <br> -->
-			    <!-- <!-- <div id="bottom_link"> --> 
-			    <!-- <!-- <div id="bottom_link"> --> 
-				<!-- <!-- </div>		 -->
-				<!-- <br> -->
-			<!-- <br> -->
-		<!-- <h4 id='Login_error' > </h4> -->
-
-			<!-- <br> -->
-			<!-- <br> -->
-	<!-- <div class="head"> -->
-		<!-- <h3 id="login_text">Not having a account? Sign up here</h3> -->
-			<!-- <a href="\signup" style="color : white; text-decoration: none"><button type="submit" class="loginButton" id='signup'>Sign Up Here</button></a> -->
-	  <!-- </div> -->
-	<!-- </div>	 -->
-	  <!-- <br> -->
-
-	  <!-- <br> -->
-		
-	<!-- </div> -->
-	<div  id="myVar" name="variable" style="display:None;" >Guest</div>
     <div id="second">
 	  <br>
 
 
       <div class="head">
-		<h1 style='font-size:45;' class='fontRoboto'> Lokly Address Parser </h1>
+		 <a href="\"> <button type="submit" class="homebarButton" style='margin-left:30%'><img src="/static/logo.png" style='height:250px; width:250px;' alt="logo"></button></a>
+		<!-- <h2 style='font-size:40;' class='fontRoboto'> Lokly Address Parser </h2> -->
 	  </div>
-	  <!-- </div> -->
 
-		<br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
 	  
       <div class="wrap">
 		<div class="search">
@@ -336,7 +314,7 @@ font-family: Roboto;
 	  </div>
 	  <br>
 	  <br>
-	  <div id='Address_error' style="display:None;"> </div>
+	  <div id='Address_error' style="display:None; color:red; font-size:17px;"> </div>
 
 		    <button type="reset" class="resetButton round  fontRoboto" style='font-size:22px' id="Reset">Reset
 		   </button>
@@ -349,8 +327,6 @@ font-family: Roboto;
 	  </div>
 	  </div>
 
-	  <!-- <a href="#search" style="color : black; text-decoration: none"><h2 id="Search_Another" style="display:None;">Search Another</div></a> -->
-
       <div class=resulttable>
 	  <div id="Address_output" style="display:None;"></div>
 	  <div id='loading' class='loader' style="display:None;"></div>
@@ -358,7 +334,7 @@ font-family: Roboto;
 	</div>
 	  <div id='third' >
 	  <div style='padding-top:0.5%; '>
-		<a href='' style='padding-right:10%; '>About Us</a><a href='' style='padding-right:10%'>Contact Us</a><a href=''>About Us</a>
+		<a href='\about' style='padding-right:10%; '>About Us</a><a href='\contact' style='padding-right:10%'>Contact Us</a><a href='\terms'>Terms and Conditions</a>
 	  </div>
 	  </div>
       <script
@@ -368,6 +344,7 @@ font-family: Roboto;
 
   <script type="text/javascript">
       $('button#Parse').click(function(){
+	    document.getElementById("Parse").disabled = true;
 	    $('div#Address_output').html('');
 		if (document.getElementById('search').value=='')
 		{
@@ -378,8 +355,6 @@ font-family: Roboto;
 	    $('#Address_error').hide();
 	    $('#loading').show();
 		$('#Search_Another').hide();
-
-		<!-- window.location.hash = '#response'; -->
         $.ajax({
 			url: "/_get_data?address="+document.getElementById('search').value+"&user_id="+sessionStorage.getItem("app_user"),
             success: function(resp){
@@ -390,6 +365,7 @@ font-family: Roboto;
 				}				
 				else				
 				{
+				document.getElementById("Parse").disabled = false;
 				$('#Address_error').hide();
 				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
                 $('div#Address_output').html(resp.Parsed_address);
@@ -398,84 +374,25 @@ font-family: Roboto;
             }
 				    $('#loading').hide();
 			}			
-        });}
+        });
+
+      }
       });
 		$('button#Reset').click(function(){
                 $('div#Address_output').html('');
 				document.getElementById("search").value = '';
       });
-      <!-- $('button#Login').click(function(){ -->
-        <!-- $.ajax({ -->
-            <!-- url: "/login_via_otp?otp_login="+document.getElementById('otp_login').value+"&user_id="+sessionStorage.getItem("login_user"), -->
-            <!-- type: "GET", -->
-            <!-- success: function(resp){ -->
-				<!-- if (resp.data) -->
-				<!-- { -->
-				<!-- $('#Login_error').html(resp.data); -->
-				<!-- $('#Login_error').show(); -->
-				
-				<!-- }				 -->
-				<!-- else				 -->
-				<!-- { -->
-				<!-- sessionStorage.setItem("app_user",resp.id); -->
-				<!-- window.location.href = '...'; -->
-				<!-- document.getElementById("email_login").value = ''; -->
-				<!-- document.getElementById("otp_login").value = ''; -->
-				<!-- $('#Welcome').html('Welcome '+resp.name); -->
-				<!-- $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. '); -->
-				<!-- $('#signup').hide(); -->
-				<!-- $('#Welcome').show(); -->
-				<!-- $('#SignText').hide(); -->
-				<!-- $('#login_text').hide(); -->
-				<!-- $('#send_otp').hide(); -->
-				<!-- $('#Login_error').hide(); -->
-				<!-- $('#Login').hide(); -->
-				<!-- $('#email_login').hide(); -->
-				<!-- $('#otp_login').hide(); -->
-				<!-- $('#Logout').show(); -->
-				<!-- } -->
 
-
-            <!-- } -->
-        <!-- }); -->
-      <!-- }); -->
-	  <!-- $('button#send_otp').click(function(){ -->
-			<!-- $('#Login_error').html('Sending OTP...'); -->
-			<!-- $('#Login_error').show(); -->
-        <!-- $.ajax({ -->
-            <!-- url: "/send_otp_to_login?email_login="+document.getElementById('email_login').value, -->
-            <!-- type: "GET", -->
-            <!-- success: function(resp){ -->
-				<!-- if (resp.data) -->
-				<!-- { -->
-				<!-- $('#Login_error').html(resp.data); -->
-				<!-- $('#Login_error').show(); -->
-				<!-- }				 -->
-				<!-- else				 -->
-				<!-- { -->
-				<!-- sessionStorage.setItem("login_user",resp.id); -->
-				<!-- $('#Login_error').html('OTP has been sent to '+document.getElementById('email_login').value); -->
-				<!-- $('#Login_error').show(); -->
-
-				<!-- $('#myVar').html(resp.id); -->
-				<!-- $('#Login').show(); -->
-				<!-- $('#otp_login').show(); -->
-				<!-- } -->
-
-
-            <!-- } -->
-        <!-- }); -->
-      <!-- }); -->
       $('button#Logout').click(function(){
        $.ajax({
             url: "/_logout",
             type: "GET",
             success: function(resp){
 				sessionStorage.setItem("app_user",'Guest');
-				$('#Welcome').hide();
 				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
 				$('#signupbar').show();
 				$('#Logout').hide();
+				$('#namebar').hide();
 				$('#loginbar').show();
                 $('div#Address_output').html('');
 				document.getElementById("search").value = '';
@@ -486,7 +403,8 @@ font-family: Roboto;
 	  var user = sessionStorage.getItem("app_user");
 	  if (user!='Guest' && user!=null)
 	  {
-        $.ajax({
+
+		$.ajax({
             url: "/refresh?&user_id="+user,
             type: "GET",
             success: function(resp){
@@ -498,19 +416,37 @@ font-family: Roboto;
 				}				
 				else				
 				{
-				$('#Welcome').html('Welcome '+resp.name);
 				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. ');
 				$('#signupbar').hide();
-				$('#Welcome').show();
 				$('#Login_error').hide();
 				$('#loginbar').hide();
 				$('#Logout').show();
+				$('#namebar').html(resp.name);
+				$('#namebar').show();
 				}
 
 
             }
         });
     };
+	if (user=='Guest' || user==null)
+	{
+	    $.ajax({
+        url: "/_logout",
+        type: "GET",
+        success: function(resp){
+			sessionStorage.setItem("app_user",'Guest');
+			$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
+			$('#signupbar').show();
+			$('#Logout').hide();
+			$('#namebar').hide();
+			$('#loginbar').show();
+            $('div#Address_output').html('');
+			document.getElementById("search").value = '';
+            
+            }
+        });
+      };
 
 
   </script>

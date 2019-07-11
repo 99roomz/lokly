@@ -7,12 +7,13 @@ from flask_mail import Mail
 import random
 from flask_mail import Message
 
+date_today=['2019-01-01']
 search_limit_guest = [10]
 search_limit_user = [100]
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SQLALCHEMY_BINDS'] = { 'ip_database' :'sqlite:///test1.db_ip'}
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/test.db'
+app.config['SQLALCHEMY_BINDS'] = { 'ip_database' :'sqlite:///database/test1.db_ip'}
 app.config.update(dict(
     DEBUG = True,
     MAIL_SERVER = 'smtp.gmail.com',
@@ -20,7 +21,7 @@ app.config.update(dict(
     MAIL_USE_TLS = True,
     MAIL_USE_SSL = False,
     MAIL_USERNAME = os.getenv('email', "indilokly@gmail.com"),
-    MAIL_PASSWORD = os.getenv('password'),
+    MAIL_PASSWORD = os.getenv('password',"lokly1234"),
 ))
 db = SQLAlchemy(app)
 mail = Mail(app)
@@ -53,8 +54,10 @@ class Guests(db.Model):
 
 db.create_all()
 
+
 @app.route('/')
 def index():
+
     guest_ip_address = str(request.remote_addr)
     t_guest_user = Guests.query.filter_by(ip = guest_ip_address).first()
     if(t_guest_user==None):
@@ -71,7 +74,7 @@ def _get_data():
         if address=='':
             return jsonify({'data':'Please enter Address','queries':t_user.number_of_queries,'limit':search_limit_user[0]})
         if t_user.number_of_queries>=search_limit_user[0]:
-            return jsonify({'data':'Search Limit reached','queries':t_user.number_of_queries,'limit':search_limit_user[0]})
+            return jsonify({'data':'Search limit reached. Try again tomorrow','queries':t_user.number_of_queries,'limit':search_limit_user[0]})
             
             
         parsed=parser(address)
@@ -89,7 +92,7 @@ def _get_data():
             db.session.commit()
         t_guest_user = Guests.query.filter_by(ip = guest_ip_address).first()
         if t_guest_user.number_of_requests>=search_limit_guest[0]:
-            return jsonify({'data':'Search Limit reached','queries':t_guest_user.number_of_requests,'limit':search_limit_guest[0]})
+            return jsonify({'data':'Search limit reached. Sign Up for more searches','queries':t_guest_user.number_of_requests,'limit':search_limit_guest[0]})
             
         parsed = parser(address)
         t_guest_user.number_of_requests+=1
@@ -110,10 +113,21 @@ def _logout():
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
-	
+    
 @app.route('/loginpage')
 def loginpage():
-    return render_template('loginpage.html')
+    return render_template('loginpage.html')    
+    
+@app.route('/about')
+def about():
+    return render_template('about.html')    
+    
+@app.route('/contact')
+def contact_us():
+    return render_template('contact.html')  
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
 
 
 @app.route('/send_otp',methods=['POST','GET'])
@@ -123,7 +137,7 @@ def send_otp():
     name = request.args.get('name')
     company = request.args.get('company')
     email = request.args.get('email')
-    domains = open("Invalid.txt","r")
+    domains = open("temp/Invalid.txt","r")
 
     if (contactno=='' or password=='' or name=='' or company=='' or email==''):
         return jsonify({'data': 'Fill all fields'})
@@ -230,10 +244,12 @@ def log_via_otp():
     return jsonify({'id':c_user.id,'name': c_user.name,'queries':c_user.number_of_queries,'limit':search_limit_user[0]})
 
 @app.route('/refresh',methods = ['POST','GET'])
-def refresh():
+def refresh():  
     user_id = request.args.get('user_id')
     c_user = Users.query.get(int(user_id))
     return jsonify({'name': c_user.name,'queries':c_user.number_of_queries,'limit':search_limit_user[0]})
+
+
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0',debug=True,port=80)

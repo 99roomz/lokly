@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html>
+   <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143664123-1');
+</script>
+<title>
+Signup to Lokly for Free 100 parses
+</title>
+   </head>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 body {font-family: Roboto;
@@ -17,7 +31,6 @@ body {font-family: Roboto;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
-  <!-- border: 3px solid #00B4CC; -->
   padding: 5px;
   height: 40px;
   border-radius: 5px;
@@ -26,7 +39,6 @@ body {font-family: Roboto;
   background-color:white;
   outline: none;
   border:1px solid #dddddd;
-  <!-- color: #9DBFAF; -->
   color:black;
 }
 
@@ -47,9 +59,8 @@ hr {
 
 
 .loginbarButton {
-  position: absolute;  
-  width: 5%;
-  left: 88%;
+  position: fixed;  
+  right: 8%;
   top:2%;
   padding:0;
   height: 4%;
@@ -59,15 +70,15 @@ hr {
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
     font-family: 'Roboto';
 }
 
 .signupbarButton {
-  position: absolute;  
-  width: 6%;
-  left: 93%;
+  position: fixed;  
+  right: 2%;
   top:2%;
+  padding:0;
   height: 4%;
   border: 0px;
   background: #ffffff;
@@ -75,27 +86,39 @@ hr {
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
+  font-size: 16px;
     font-family: 'Roboto';
-  font-size: 20px;
-  padding:0;
-  
 }
 
 
 .homebarButton {
-  position: absolute;  
-  width: 4%;
+  position: fixed;  
   left: 1%;
-  top:2%;
-  height: 4%;
+  top:0%;
   border: 0px;
   background: #ffffff;
   text-align: center;
   color: #000000;
   border-radius: 0px;
   cursor: pointer;
-    font-family: 'Roboto';
-  font-size: 20px;
+  font-family: 'Roboto';
+  font-size: 30px;
+  padding:0;
+  
+}
+
+.namebartext {
+  position: fixed;  
+  right: 8%;
+  top:2.5%;
+  height: 5%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  font-family: 'Roboto';
+  font-size: 16px;
   padding:0;
   
 }
@@ -124,7 +147,7 @@ hr {
   height: 14%;
   right:4%;
   border: 1px solid #00B4CC;
-  background: #009688;
+  background: #16B647;
   text-align: center;
   color: #fff;
   border-radius: 5px;
@@ -141,7 +164,7 @@ hr {
   height: 35px;
   float:right;
   border: 1px solid #00B4CC;
-  background: #009688;
+  background: #16B647;
   text-align: center;
   color: #fff;
   border-radius: 5px;
@@ -256,7 +279,7 @@ button[disabled]{
     width: 100%;
 	bottom:0%;
     height: 6%;
-	background: #009688 ;
+	background: #D9D9D9 ;
 }
 
 
@@ -291,24 +314,29 @@ button[disabled]{
 }
 
 a{
-	color : white;
+	color : black;
 	text-decoration: none;
+}
+
+.fontRoboto{
+font-family: Roboto;
 }
 
 </style>
 <body>
-	<a href="\"> <button type="submit" class="homebarButton">Lokly</button></a>
-   <a href="\loginpage"> <button type="submit" class="loginbarButton" >Login</button></a>
-   <a href="\signup"> <button type="submit" class="signupbarButton" >Sign Up</button></a>
+   <a href="\"> <button type="submit" class="homebarButton"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></button></a>
+   <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
+   <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
+   <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
+   <div id='namebar' class="namebartext" style="display: none;"></div>
 
       <div class="wrap">
    <div id="wrapper">
-    <!-- <div id = "testing" >1</div> -->
 	<div id='otppage'   >
     <div id="first" >
   <div class="container">
 <div class="search">	  
-    <h1>Sign Up</h1>
+    <h2 style='font-size:40;' align='center' class='fontRoboto'> Sign Up </h2>
 
     <label for="name" ><b>Name</b></label>
     <input class = "searchTerm round" type="text"  placeholder="Enter your name here" style=' color:black' name="name" id="name" required>
@@ -336,7 +364,8 @@ a{
 	<div id='signupotppage' style="display:None;">
     <div id="second">
   <div class="container" >
-	    <h1>Sign Up</h1>
+	    <h2 style='font-size:40;' align='center' class='fontRoboto'> Sign Up </h2>
+		<br>
   <label for="otp"  ><b>Verification Code (Email)</b></label>
   <input class = "searchTerm round" style=' color:black' style='width:80%' type="text"  placeholder="Enter OTP" name="otp"  id="otp_enter">
   
@@ -365,7 +394,7 @@ a{
 
 	  <div id='third' >
 	  <div style='padding-top:0.5%;' align='center'>
-		<a href='' style='padding-right:10%; '>About Us</a><a href='' style='padding-right:10%'>Contact Us</a><a href=''>About Us</a>
+		<a href='\about' style='padding-right:10%; '>About Us</a><a href='\contact' style='padding-right:10%'>Contact Us</a><a href='\terms'>Terms and Conditions</a>
 	  </div>
 				</div>
 
@@ -617,7 +646,27 @@ else
 
         });
 
-	  
+			var user = sessionStorage.getItem("app_user");
+	  if (user!='Guest' && user!=null)
+	  {
+        $.ajax({
+            url: "/refresh?&user_id="+user,
+            type: "GET",
+            success: function(resp){
+				if (resp.data)
+				{
+
+				
+				}				
+				else				
+				{
+				window.location.href = '\\';
+				}
+
+
+            }
+        });
+    };  
 
 
 	

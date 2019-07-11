@@ -1,0 +1,236 @@
+<html>
+
+   <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143664123-1');
+</script>
+<title>
+Contact Lokly
+</title>
+   </head>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html {
+  scroll-behavior: smooth;
+}
+	
+	
+body{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  background-size: 100% 500px;
+  padding:0;
+  margin:0;
+  background-attachment: fixed;
+  font-family: Roboto;
+  font-size:120%;
+  color:#000000;
+  
+}
+
+
+.loginbarButton {
+  position: fixed;  
+  right: 8%;
+  top:2%;
+  padding:0;
+  height: 4%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  cursor: pointer;
+  font-size: 16px;
+    font-family: 'Roboto';
+}
+
+.signupbarButton {
+  position: fixed;  
+  right: 2%;
+  top:2%;
+  padding:0;
+  height: 4%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  cursor: pointer;
+  font-size: 16px;
+    font-family: 'Roboto';
+}
+
+
+.homebarButton {
+  position: fixed;  
+  left: 1%;
+  top:0%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 30px;
+  padding:0;
+  
+}
+
+.namebartext {
+  position: fixed;  
+  right: 8%;
+  top:2.5%;
+  height: 5%;
+  border: 0px;
+  background: #ffffff;
+  text-align: center;
+  color: #000000;
+  border-radius: 0px;
+  font-family: 'Roboto';
+  font-size: 16px;
+  padding:0;
+  
+}
+
+
+
+div {
+    display: block;
+}
+#wrapper {
+
+    width: 100%;
+    height:100%;
+}
+
+
+#first {
+	border:1px solid #dddddd;
+	border-radius:20px;
+	position:relative;
+    float:center;
+    width: 50%;
+	top:20%;
+    height: 40%;
+	margin-left:25%;
+}
+
+
+
+#third {
+	position:fixed;
+    width: 100%;
+	bottom:0%;
+    height: 6%;
+	background: #D9D9D9 ;
+}
+
+
+.fontRoboto{
+font-family: Roboto;
+}
+
+a{
+	color : black;
+	text-decoration: none;
+}
+
+
+
+
+</style>
+   <a href="\"> <button type="submit" class="homebarButton"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></button></a>
+   <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
+   <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
+   <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
+   <div id='namebar' class="namebartext" style="display: none;"></div>
+<div class='fontRoboto'>
+   <body align='center'>
+   <div id="wrapper">
+    <div id="first" align="justify" style="padding-left:20px; padding-right:20px">
+	<h2 style='font-size:40;' align='center' class='fontRoboto'> Contact </h2>
+	<br>
+	<br>
+	<div align='center'>
+			 
+
+Want to file a bug, contribute some code, or improve documentation, or want to use this in your business send a mail to hello@lokly.in. 
+
+
+
+	</div>
+	</div>
+	  </div>
+	  <div id='third' >
+	  <div style='padding-top:0.5%; '>
+		<a href='\about' style='padding-right:10%; '>About Us</a><a href='\contact' style='padding-right:10%'>Contact Us</a><a href='\terms'>Terms and Conditions</a>
+	  </div>
+				</div>		
+      <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+
+
+      $('button#Logout').click(function(){
+       $.ajax({
+            url: "/_logout",
+            type: "GET",
+            success: function(resp){
+				sessionStorage.setItem("app_user",'Guest');
+				$('#Welcome').hide();
+				$('#signupbar').show();
+				$('#namebar').hide();
+				$('#Logout').hide();
+				$('#loginbar').show();
+
+            
+            }
+        });
+      });
+
+		  var user = sessionStorage.getItem("app_user");
+	  if (user!='Guest' && user!=null)
+	  {
+        $.ajax({
+            url: "/refresh?&user_id="+user,
+            type: "GET",
+            success: function(resp){
+				if (resp.data)
+				{
+				$('#Login_error').html(resp.data);
+				$('#Login_error').show();
+				
+				}				
+				else				
+				{
+				$('#Welcome').html('Welcome '+resp.name);
+				$('#signupbar').hide();
+				$('#Login_error').hide();
+				$('#loginbar').hide();
+				$('#Logout').show();
+				$('#namebar').html(resp.name);
+				$('#namebar').show();
+				}
+
+
+            }
+        });
+    };
+
+  </script>
+  </body>
+   
+</html>

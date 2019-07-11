@@ -1,8 +1,8 @@
 def parser(address):
     from nltk.tag.stanford import StanfordNERTagger
     stanford_ner_tagger = StanfordNERTagger(
-        'model.ser.gz',
-        'stanford-ner-3.9.2.jar'
+        'model/model.ser.gz',
+        'model/stanford-ner-3.9.2.jar'
     )
 
     def remove_punctuation(string):   
