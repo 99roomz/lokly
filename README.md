@@ -14,7 +14,22 @@ You can test it at www.lokly.in.   This is currently in beta and is available fo
 
 # Installation 
 
- 
+```bash
+#Clone the repository
+git clone https://github.com/spandansingh/url_scraper.git
+```
+
+```bash
+#Build the image
+sudo docker build -t 99roomz/lokly .
+```
+
+```bash
+#Run the container
+sudo docker run -d -t -i -e email='<email>' -e password='<password>' -p 80:80 --name lokly 99roomz/lokly
+```
+
+Yay! Everything is now up and running.
 
 # How to contribute 
 
