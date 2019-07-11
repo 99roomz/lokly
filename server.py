@@ -74,7 +74,7 @@ def _get_data():
         if address=='':
             return jsonify({'data':'Please enter Address','queries':t_user.number_of_queries,'limit':search_limit_user[0]})
         if t_user.number_of_queries>=search_limit_user[0]:
-            return jsonify({'data':'Search limit reached. Try again tomorrow','queries':t_user.number_of_queries,'limit':search_limit_user[0]})
+            return jsonify({'data':'Search limit reached','queries':t_user.number_of_queries,'limit':search_limit_user[0]})
             
             
         parsed=parser(address)
