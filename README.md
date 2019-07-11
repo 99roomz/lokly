@@ -29,7 +29,8 @@ sudo docker build -t 99roomz/lokly .
 sudo docker run -d -t -i -e email='<email>' -e password='<password>' -p 80:80 --name lokly 99roomz/lokly
 ```
 
-Yay! Everything is now up and running.
+Yay! Everything is now up and running. Now go to http://localhost for web client. 
+<email> and <password> is your Gmail Id and password which is required to send the emails from this application.
 
 # How to contribute 
 
