@@ -7,13 +7,15 @@ from flask_mail import Mail
 import random
 from flask_mail import Message
 
-date_today=['2019-01-01']
 search_limit_guest = [10]
 search_limit_user = [100]
 
+if not os.path.exists('temp/database/'):
+    os.makedirs('temp/database/')
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/test.db'
-app.config['SQLALCHEMY_BINDS'] = { 'ip_database' :'sqlite:///database/test1.db_ip'}
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///temp/database/user.db'
+app.config['SQLALCHEMY_BINDS'] = { 'ip_database' :'sqlite:///temp/database/guest.db_ip'}
 app.config.update(dict(
     DEBUG = True,
     MAIL_SERVER = 'smtp.gmail.com',
@@ -137,7 +139,7 @@ def send_otp():
     name = request.args.get('name')
     company = request.args.get('company')
     email = request.args.get('email')
-    domains = open("temp/Invalid.txt","r")
+    domains = open("static/Invalid.txt","r")
 
     if (contactno=='' or password=='' or name=='' or company=='' or email==''):
         return jsonify({'data': 'Fill all fields'})
