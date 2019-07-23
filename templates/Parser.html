@@ -1,456 +1,264 @@
+
 <html>
+<head>
 
-   <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  gtag('config', 'UA-143664123-1');
-</script>
-<title>
-Lokly - Address Intelligence, Indian Address Parser
-</title>
-   </head>
-	<style>
-		@import url(https://fonts.googleapis.com/css?family=Roboto);
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>      
 
-html {
-  scroll-behavior: smooth;
-}
-	
-	
-body{
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top;
-  background-size: 100% 500px;
-  padding:0;
-  margin:0;
-  background-attachment: fixed;
-  font-family: Roboto;
-  font-size:120%;
-  color:#000000;
-}
+    gtag('config', 'UA-143664123-1');
+  </script>
 
+  <title>
+    Lokly - Address Intelligence, Indian Address Parser
+  </title>
 
+  <style>
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: 60px; /* Margin bottom by footer height */
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 60px; /* Set the fixed height of the footer here */
+      line-height: 60px; /* Vertically center the text there */
+      background-color: #f5f5f5;
+    }
 
-.search {
-  width: 100%;
-  position: relative
-}
+    .loader {
+      border: 16px solid green;
+      border-radius: 50%;
+      margin-left:45%;
+      position:relative;
+      align:center;
+      float:center;
+      border-top: 16px solid brown;
+      border-bottom: 16px solid blue;
+      border-left: 16px solid red;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 1s linear infinite; /* Safari */
+      animation: spin 1s linear infinite;
+    }
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
 
-.searchTerm {
-  float: center;
-  width: 90%;
-  padding: 5px;
-  height: 40px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: bold;
-  outline: none;
-  color:black;
-}
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 
-.searchTerm:focus{
-  color: #00B4CC;
-}
+</head>
 
-.parseButton {
-  position: relative;  
-  width: 40%;
-  bottom: -30px;
-  height: 45px;
-  border: 1px solid #00B4CC;
-  background: #16B647;
-  text-align: center;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-}
+<body>
 
-.resetButton {
-  position: relative;  
-  width: 40%;
-  bottom: -10px;
-  height: 36px;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-}
+  <!-- Header -->
 
-.loginbarButton {
-  position: fixed;  
-  right: 8%;
-  top:2%;
-  padding:0;
-  height: 4%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-size: 16px;
-    font-family: 'Roboto';
-}
+  <nav class="navbar navbar-expand-sm navbar-light justify-content-end">
+    <a class="navbar-brand" href="\"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></a>
+    <span class="ml-auto mr-1"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-.signupbarButton {
-  position: fixed;  
-  right: 2%;
-  top:2%;
-  padding:0;
-  height: 4%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-size: 16px;
-    font-family: 'Roboto';
-}
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <ul class="navbar-nav text-right">
+        <li class="nav-item active">
+          <a href="\loginpage" class="nav-link">
+            <button type="submit" class="btn btn-outline-success mr-2" id='loginbar'>Login</button>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="\signup" class="nav-link">
+            <button type="submit" class="btn btn-outline-success" id='signupbar'>Sign Up</button></a>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link">
+            <button type="submit" class="btn btn-outline-success" id='' style="display: none;">Logout</button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
+  <div id='namebar' class="" style="display: none;"></div>
 
-.homebarButton {
-  position: fixed;  
-  left: 1%;
-  top:0%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-family: 'Roboto';
-  font-size: 30px;
-  padding:0;
-  outline:none;
-  
-}
-
-.namebartext {
-  position: fixed;  
-  right: 8%;
-  top:2.5%;
-  height: 5%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  font-family: 'Roboto';
-  font-size: 16px;
-  padding:0;
-  
-}	
-
-
-.loader {
-  border: 16px solid green;
-  border-radius: 50%;
-  margin-left:45%;
-  position:relative;
-  align:center;
-  float:center;
-  border-top: 16px solid brown;
-  border-bottom: 16px solid blue;
-  border-left: 16px solid red;
-  width: 60px;
-  height: 60px;
-  -webkit-animation: spin 1s linear infinite; /* Safari */
-  animation: spin 1s linear infinite;
-}
-
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/*Resize the wrap to see the search bar change!*/
-}
-.wrap{
-  width: 80%;
-  position: relative;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/*Resize the wrap to see the table change!*/
-.resulttable{
-  width: 50%;
-  float: top;
-  text-align: center;
-  align: center;
-  position: absolute;
-  top: 75%;
-  padding-bottom:4%;
-  left: 25%;
-  font-size:90%;
-}
-
-a{
-	color : black;
-	text-decoration: none;
-}
-
-
-button:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-
-/*Resize the wrap to see the head change!*/
-.head{
-  width: 100%;
-  position: relative;
-  text-align: center;
-  top: 5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-div {
-    display: block;
-}
-#wrapper {
-
-    width: 100%;
-    height:100%;
-}
-
-
-#first {
-    float:left;
-    width: 25%;
-    height: 100%;
-	margin-left:2%;
-}
-#second {
-    float:center;
-	align:center;
-    width: 40%;
-	margin-left:30%;
-    height: 100%;
-
-}
-#third {
-	position:fixed;
-    width: 100%;
-	bottom:0%;
-    height: 6%;
-	background: #D9D9D9 ;
-}
-
-.round{
-  border-radius: 8px 8px 8px 8px;
-
-}
-
-::placeholder {
-  color:D9D9D9;
-}
-
-.fontRoboto{
-font-family: Roboto;
-}
-
-
-
-
-
-</style>
-<div class='fontRoboto'>
-   <body align='center'>
-   <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
-   <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
-   <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
-   <div id='namebar' class="namebartext" style="display: none;"></div>
-   <div id="wrapper">
-
-    <div id="second">
-	  <br>
-
-
+  <div class="container text-center">
+    <div class="col-md-12">
       <div class="head">
-		 <a href="\"> <button type="submit" class="homebarButton" style='margin-left:30%;'><img src="/static/logo.png" style='height:250px; width:250px;' alt="logo"></button></a>
-		<!-- <h2 style='font-size:40;' class='fontRoboto'> Lokly Address Parser </h2> -->
-	  </div>
+        <a href="\"> <img src="/static/logo.png" style='height:250px; width:250px;' alt="logo"></a>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="input-group text-center">
+            <input type="text" style='color:black;' class="searchTerm form-control" placeholder="Enter the Address..." name="search" id="search">
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>    
+      
+      <div id='Address_error' style="display:None; color:red;"></div>
 
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  
-      <div class="wrap">
-		<div class="search">
-   
-			<input type="text" style=' color:black; font-size:90% ;padding-left: 12px;' class="searchTerm round fontRoboto" placeholder="Enter the Address..." name="search" id="search">
-		    <button type="submit" class="parseButton round  fontRoboto" id='Parse'>Parse
-	    	 </button>
-		</div>
-	  </div>
-	  <br>
-	  <br>
-	  <div id='Address_error' style="display:None; color:red; font-size:17px;"> </div>
+      <div class="actions text-center mt-1">
+          <button type="submit" class="btn btn-success btn-lg parseButton" id='Parse'>Parse</button>
+      </div>
 
-		    <button type="reset" class="resetButton round  fontRoboto" style='font-size:22px' id="Reset">Reset
-		   </button>
-	  <br>
-	  <br>
+      <div class="actions text-center mt-1">
+          <button type="reset" class="btn btn-light btn-lg resetButton" id="Reset">Reset</button>
+      </div>
+    
+      <div id='searches' style='color:black;'>
+        <p>
+          You have consumed {{ already_used }} out of 10 searches.
+        </p>
+      </div>
+    
+      <p><div id="Address_output" style="display:none;"></div></p>
+      <div id='loading' class='loader' style="display:none"></div>
+    </div>
+        
+  </div>
 
-		   <div id='searches' style='color:black ;font-size:18px'>You have consumed {{ already_used }} out of 10 searches.</div>
+  <footer class="footer">
+    <div class="container text-center">
+        <a href='\about' class="mr-5">About Us</a>
+        <a href='\contact'>Contact Us</a>
+        <a href='#' class="ml-5">Terms and Conditions</a>
 
-
-	  </div>
-	  </div>
-
-      <div class=resulttable>
-	  <div id="Address_output" style="display:None;"></div>
-	  <div id='loading' class='loader' style="display:None;"></div>
-	</div>
-	</div>
-	  <div id='third' >
-	  <div style='padding-top:0.5%; '>
-		<a href='\about' style='padding-right:10%; '>About Us</a><a href='\contact' style='padding-right:10%'>Contact Us</a>Terms and Conditions
-	  </div>
-	  </div>
-      <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
   <script type="text/javascript">
-      $('button#Parse').click(function(){
-	    document.getElementById("Parse").disabled = true;
-	    $('div#Address_output').html('');
-		if (document.getElementById('search').value=='')
-		{
-		}
-		else
-		{
-
-	    $('#Address_error').hide();
-	    $('#loading').show();
-		$('#Search_Another').hide();
-        $.ajax({
-			url: "/_get_data?address="+document.getElementById('search').value+"&user_id="+sessionStorage.getItem("app_user"),
-            success: function(resp){
-				if (resp.data)
-				{
-				 $('#Address_error').html(resp.data);
-				 $('#Address_error').show();
-				}				
-				else				
-				{
-				document.getElementById("Parse").disabled = false;
-				$('#Address_error').hide();
-				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
-                $('div#Address_output').html(resp.Parsed_address);
-				$('#Address_output').show();
-				$('#Search_Another').show();
-            }
-				    $('#loading').hide();
-			}			
-        });
-
+    $('#Parse').click(function(){
+      document.getElementById("Parse").disabled = true;
+      $('#Address_output').html('');
+      if (document.getElementById('search').value=='')
+      {
       }
+      else
+      {
+      $('#Address_error').hide();
+      $('#loading').show();
+      $('#Search_Another').hide();
+      $.ajax({
+    url: "/_get_data?address="+document.getElementById('search').value+"&user_id="+sessionStorage.getItem("app_user"),
+          success: function(resp){
+      if (resp.data)
+      {
+        $('#Address_error').html(resp.data);
+        $('#Address_error').show();
+      }				
+      else				
+      {
+      document.getElementById("Parse").disabled = false;
+      $('#Address_error').hide();
+      $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
+      $('div#Address_output').html(resp.Parsed_address);
+      $('#Address_output').show();
+      $('#Search_Another').show();
+          }
+          $('#loading').hide();
+    }			
       });
-		$('button#Reset').click(function(){
-                $('div#Address_output').html('');
-				document.getElementById("search").value = '';
+
+    }
+    });
+  $('#Reset').click(function(){
+              $('div#Address_output').html('');
+      document.getElementById("search").value = '';
+    });
+
+    $('#Logout').click(function(){
+     $.ajax({
+          url: "/_logout",
+          type: "GET",
+          success: function(resp){
+      sessionStorage.setItem("app_user",'Guest');
+      $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
+      $('#signupbar').show();
+      $('#Logout').hide();
+      $('#namebar').hide();
+      $('#loginbar').show();
+              $('div#Address_output').html('');
+      document.getElementById("search").value = '';
+          
+          }
       });
+    });
+  var user = sessionStorage.getItem("app_user");
+  if (user!='Guest' && user!=null)
+  {
 
-      $('button#Logout').click(function(){
-       $.ajax({
-            url: "/_logout",
-            type: "GET",
-            success: function(resp){
-				sessionStorage.setItem("app_user",'Guest');
-				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
-				$('#signupbar').show();
-				$('#Logout').hide();
-				$('#namebar').hide();
-				$('#loginbar').show();
-                $('div#Address_output').html('');
-				document.getElementById("search").value = '';
-            
-            }
-        });
+  $.ajax({
+          url: "/refresh?&user_id="+user,
+          type: "GET",
+          success: function(resp){
+      if (resp.data)
+      {
+      $('#Login_error').html(resp.data);
+      $('#Login_error').show();
+      
+      }				
+      else				
+      {
+      $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. ');
+      $('#signupbar').hide();
+      $('#Login_error').hide();
+      $('#loginbar').hide();
+      $('#Logout').show();
+      $('#namebar').html(resp.name);
+      $('#namebar').show();
+      }
+
+
+          }
       });
-	  var user = sessionStorage.getItem("app_user");
-	  if (user!='Guest' && user!=null)
-	  {
-
-		$.ajax({
-            url: "/refresh?&user_id="+user,
-            type: "GET",
-            success: function(resp){
-				if (resp.data)
-				{
-				$('#Login_error').html(resp.data);
-				$('#Login_error').show();
-				
-				}				
-				else				
-				{
-				$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. ');
-				$('#signupbar').hide();
-				$('#Login_error').hide();
-				$('#loginbar').hide();
-				$('#Logout').show();
-				$('#namebar').html(resp.name);
-				$('#namebar').show();
-				}
-
-
-            }
-        });
+  };
+if (user=='Guest' || user==null)
+{
+    $.ajax({
+      url: "/_logout",
+      type: "GET",
+      success: function(resp){
+    sessionStorage.setItem("app_user",'Guest');
+    $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
+    $('#signupbar').show();
+    $('#Logout').hide();
+    $('#namebar').hide();
+    $('#loginbar').show();
+          $('div#Address_output').html('');
+    document.getElementById("search").value = '';
+          
+          }
+      });
     };
-	if (user=='Guest' || user==null)
-	{
-	    $.ajax({
-        url: "/_logout",
-        type: "GET",
-        success: function(resp){
-			sessionStorage.setItem("app_user",'Guest');
-			$('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
-			$('#signupbar').show();
-			$('#Logout').hide();
-			$('#namebar').hide();
-			$('#loginbar').show();
-            $('div#Address_output').html('');
-			document.getElementById("search").value = '';
-            
-            }
-        });
-      };
 
-
-  </script>
-  </body>
+</script>
+</body>
    
 </html>
