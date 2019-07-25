@@ -15,7 +15,7 @@ if not os.path.exists('temp/database/'):
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///temp/database/user.db'
-app.config['SQLALCHEMY_BINDS'] = { 'ip_database' :'sqlite:///temp/database/guest.db_ip'}
+app.config['SQLALCHEMY_BINDS'] = { 'ip_database' :'sqlite:///temp/database/guest.db','address' :'sqlite:///temp/database/address.db'}
 app.config.update(dict(
     DEBUG = True,
     MAIL_SERVER = 'smtp.gmail.com',
@@ -54,6 +54,24 @@ class Guests(db.Model):
     def __repr__(self):
         return '< Task %r >' % self.id
 
+class AddressData(db.Model):
+    __bind_key__ = 'address'
+    id = db.Column(db.Integer,primary_key = True)
+    address_input = db.Column(db.String(40))
+    house_no = db.Column(db.String(40))
+    street = db.Column(db.String(40))
+    micro_locality = db.Column(db.String(40))
+    sub_locality = db.Column(db.String(40))
+    locality = db.Column(db.String(40))
+    neighborhood = db.Column(db.String(40))
+    city = db.Column(db.String(40))
+    state = db.Column(db.String(40))
+    country = db.Column(db.String(40))
+    postal = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '< Task %r >' % self.id
+
 db.create_all()
 
 
@@ -71,7 +89,9 @@ def index():
 def _get_data():
     address=request.args.get('address')
     user_id = request.args.get('user_id')
-    if (user_id!='Guest' and user_id!='null' ):
+    # print(address)
+    # print(user_id)
+    if (user_id!='Guest' and user_id!='null' and user_id!='' ):
         t_user = Users.query.get(int(user_id))
         if address=='':
             return jsonify({'data':'Please enter Address','queries':t_user.number_of_queries,'limit':search_limit_user[0]})
@@ -80,6 +100,10 @@ def _get_data():
             
             
         parsed=parser(address)
+        address_data = AddressData(address_input = address , house_no = parsed['House No'],street=parsed['Street'],micro_locality=parsed['Micro Locality'],sub_locality=parsed['Sublocality'],locality=parsed['Locality'],neighborhood=parsed['Neighbourhood'],city=parsed['City'],state=parsed['State'],country=parsed['Country'],postal=parsed['Postal'])
+        db.session.add(address_data)
+        db.session.commit()
+
         t_user.number_of_queries+=1
         db.session.commit()
         return jsonify({'Parsed_address': render_template('response.html', result=parsed),'queries':t_user.number_of_queries,'limit':search_limit_user[0]})
@@ -97,6 +121,10 @@ def _get_data():
             return jsonify({'data':'Search limit reached. Sign Up for more searches','queries':t_guest_user.number_of_requests,'limit':search_limit_guest[0]})
             
         parsed = parser(address)
+        address_data = AddressData(address_input = address , house_no = parsed['House No'],street=parsed['Street'],micro_locality=parsed['Micro Locality'],sub_locality=parsed['Sublocality'],locality=parsed['Locality'],neighborhood=parsed['Neighbourhood'],city=parsed['City'],state=parsed['State'],country=parsed['Country'],postal=parsed['Postal'])
+        db.session.add(address_data)
+        db.session.commit()
+
         t_guest_user.number_of_requests+=1
         db.session.commit()
         return jsonify({'Parsed_address': render_template('response.html', result=parsed),'queries':t_guest_user.number_of_requests,'limit':search_limit_guest[0]})
