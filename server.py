@@ -166,7 +166,7 @@ def send_otp():
     password = request.args.get('password')
     name = request.args.get('name')
     company = request.args.get('company')
-    email = request.args.get('email')
+    email = str.lower(request.args.get('email'))
     domains = open("static/Invalid.txt","r")
 
     if (contactno=='' or password=='' or name=='' or company=='' or email==''):
@@ -206,8 +206,8 @@ def send_otp():
         db.session.add(new_user)
         db.session.commit()
         
-    msg = Message("Verification Code for Indilokly",sender="hello@lokly.in",recipients=[email])
-    msg.body = "Hello ,your verification code for indilokly is "+str(temp)
+    msg = Message("Verification Code for Lokly",sender="hello@lokly.in",recipients=[email])
+    msg.body = "Hello ,your verification code for lokly is "+str(temp)
     try:
         mail.send(msg)
     except:
@@ -243,7 +243,7 @@ def submit_otp():
 
 @app.route('/send_otp_to_login',methods=['POST','GET'])
 def send_otp_to_login():
-    user_email = request.args.get('email_login')
+    user_email = str.lower(request.args.get('email_login'))
     t_user = Users.query.filter_by(email = user_email).first()
     if(t_user==None):
         return jsonify({ 'data':'Not registered. Please create a account.'})
@@ -254,8 +254,8 @@ def send_otp_to_login():
     temp = random.randrange(1000,9999)
     t_user.otp = str(temp)
     db.session.commit()
-    msg = Message("Verification Code for Indilokly",sender="hello@lokly.in",recipients=[user_email])
-    msg.body = "Hello ,your verification code for indilokly is "+str(temp)
+    msg = Message("Verification Code for Lokly",sender="hello@lokly.in",recipients=[user_email])
+    msg.body = "Hello ,your verification code for lokly is "+str(temp)
     try:
         mail.send(msg)
     except:
