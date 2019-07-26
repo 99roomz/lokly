@@ -176,7 +176,9 @@
       $('#loading').show();
       $('#Search_Another').hide();
       $.ajax({
-    url: "/_get_data?address="+document.getElementById('search').value+"&user_id="+sessionStorage.getItem("app_user"),
+    url: "/_get_data",
+	data : { 'address':  document.getElementById('search').value,'user_id':sessionStorage.getItem("app_user")},
+          type:'GET',
           success: function(resp){
       if (resp.data)
       {

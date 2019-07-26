@@ -6,7 +6,8 @@ def parser(address):
     )
 
     def remove_punctuation(string):   
-        sym = ['?', '!', '.','-','_','/',"\\",',',':','(',')','[',']',';','@','#','&','|','+']              
+        # sym = ['?', '!', '.','-','_','/',"\\",',',':','(',')','[',']',';','@','#','&','|','+']              
+        sym = [',','/']              
         out = ""
         for c in string:
             # check if this is the symbol we need to process
