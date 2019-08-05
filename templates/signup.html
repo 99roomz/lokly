@@ -381,7 +381,6 @@ font-family: Roboto;
   
  <button type="submit" class="gobackButton" id='goback'>Go Back</button>
 
-  <div  id="myVar" name="variable" style="display:None;">Guest</div>
 
 <br>
 
@@ -406,6 +405,14 @@ src="https://code.jquery.com/jquery-3.2.1.min.js"
 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 crossorigin="anonymous"></script>
 <script type="text/javascript">
+    var input = document.getElementById("otp_enter");
+	input.addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+	   event.preventDefault();
+	   document.getElementById("SignUp").click();
+	  }
+	});
+
 var em = 0;
 document.getElementById('name').addEventListener("keyup", function() {
         var letters = /^[A-Z a-z]+$/;

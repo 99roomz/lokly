@@ -164,6 +164,13 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
   <script type="text/javascript">
+    var input = document.getElementById("search");
+	input.addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+	   event.preventDefault();
+	   document.getElementById("Parse").click();
+	  }
+	});
     $('#Parse').click(function(){
       document.getElementById("Parse").disabled = true;
       $('#Address_output').html('');

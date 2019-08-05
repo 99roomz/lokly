@@ -307,7 +307,22 @@ font-family: Roboto;
   crossorigin="anonymous"></script>
 
   <script type="text/javascript">
+    var input = document.getElementById("email_login");
+	input.addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+	   event.preventDefault();
+	   document.getElementById("send_otp").click();
+	  }
+	});
 
+    var input = document.getElementById("otp_login");
+	input.addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+	   event.preventDefault();
+	   document.getElementById("Login").click();
+	  }
+	});	
+	
       $('button#Login').click(function(){
         $.ajax({
             url: "/login_via_otp?otp_login="+document.getElementById('otp_login').value+"&user_id="+sessionStorage.getItem("login_user"),
@@ -334,7 +349,7 @@ font-family: Roboto;
       });
 	  $('button#send_otp').click(function(){
 			$('#loading').show();
-			$('#Login_error').show();
+			$('#Login_error').hide();
         $.ajax({
             url: "/send_otp_to_login?email_login="+document.getElementById('email_login').value,
             type: "GET",
