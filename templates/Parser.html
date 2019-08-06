@@ -39,7 +39,7 @@
       width: 100%;
       height: 60px; /* Set the fixed height of the footer here */
       line-height: 60px; /* Vertically center the text there */
-      background-color: #f5f5f5;
+      background-color: #D9D9D9;
     }
 
     .loader {
@@ -70,6 +70,11 @@
     .head {
       height: 200px;
     }
+	a{
+	color : black;
+	text-decoration: none;
+	}
+
     #Parse {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -83,37 +88,33 @@
 </head>
 
 <body>
-
   <!-- Header -->
 
-  <nav class="navbar navbar-expand-sm navbar-light justify-content-end">
-    <span class="ml-auto mr-1"></span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+	<div id='logged_out'>
+	<div class="d-flex">
+  <div class="mr-auto p-2"></div>
+  <div class="p-2"><a href="\loginpage">Login</a></div>
+  <div class="p-2"><a href="\signup" >Sign Up</a></div>
+</div>
+</div>
 
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-      <ul class="navbar-nav text-right">
-        <li class="nav-item active">
-          <a href="\loginpage" class="nav-link">
-            <button type="submit" class="btn btn-outline-success mr-2" id='loginbar'>Login</button>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a href="\signup" class="nav-link">
-            <button type="submit" class="btn btn-outline-success" id='signupbar'>Sign Up</button></a>
-          </a>
-        </li>
-  <div id='namebar' style="display: none; padding-top:15px"></div>
-        <li class="nav-item active">
-          <a class="nav-link">
-            <button type="submit" class="btn btn-outline-success" id='Logout' style="display: none;">Logout</button>
-          </a>
-        </li>
-      </ul>
+	<div id='logged_in' style='display:none'>
+	<div class="d-flex">
+  <div class="mr-auto p-2"></div>
+  <div class="p-2" id='namebar'></div>
+  <div class="p-2" id='Logout'><button style='background-color:white; border:none'>Logout </button>
+  </div>
+</div>
+</div>
+
+  <footer class="footer">
+    <div class="container-fluid d-flex justify-content-around text-center">
+        <a href='\about' >About Us</a>
+        <a href='\contact'>Contact Us</a>
+        <a href='#' >Terms and Conditions</a>
+
     </div>
-  </nav>
-
+  </footer>
 
   <div class="container text-center">
     <div class="col-md-12">
@@ -134,11 +135,11 @@
       <div id='Address_error' style="display:None; color:red;"></div>
 
       <div class="actions text-center mt-1">
-          <button type="submit" class="btn btn-success btn-lg parseButton" id='Parse'>Parse</button>
+          <button type="submit" class="btn btn-success btn-lg " id='Parse'>Parse</button>
       </div>
 
       <div class="actions text-center mt-1">
-          <button type="reset" class="btn btn-light btn-lg resetButton" id="Reset">Reset</button>
+          <button type="reset" class="btn btn-light btn-lg" id="Reset">Reset</button>
       </div>
     
       <div id='searches' style='color:black;'>
@@ -152,15 +153,8 @@
     </div>
         
   </div>
+  <br>
 
-  <footer class="footer">
-    <div class="container text-center">
-        <a href='\about' class="mr-5">About Us</a>
-        <a href='\contact'>Contact Us</a>
-        <a href='#' class="ml-5">Terms and Conditions</a>
-
-    </div>
-  </footer>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
   <script type="text/javascript">
@@ -219,11 +213,9 @@
           success: function(resp){
       sessionStorage.setItem("app_user",'Guest');
       $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
-      $('#signupbar').show();
-      $('#Logout').hide();
-      $('#namebar').hide();
-      $('#loginbar').show();
-              $('div#Address_output').html('');
+      $('#logged_in').hide();
+      $('#logged_out').show();
+      $('div#Address_output').html('');
       document.getElementById("search").value = '';
           
           }
@@ -246,12 +238,10 @@
       else				
       {
       $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. ');
-      $('#signupbar').hide();
       $('#Login_error').hide();
-      $('#loginbar').hide();
-      $('#Logout').show();
+      $('#logged_in').show();
+      $('#logged_out').hide();
       $('#namebar').html(resp.name);
-      $('#namebar').show();
       }
 
 
@@ -266,10 +256,8 @@ if (user=='Guest' || user==null)
       success: function(resp){
     sessionStorage.setItem("app_user",'Guest');
     $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
-    $('#signupbar').show();
-    $('#Logout').hide();
-    $('#namebar').hide();
-    $('#loginbar').show();
+      $('#logged_in').hide();
+      $('#logged_out').show();
           $('div#Address_output').html('');
     document.getElementById("search").value = '';
           

@@ -1,6 +1,14 @@
 <html>
 
    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>      
+  
    <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
 <script>
@@ -17,124 +25,21 @@ About Lokly
 	<style>
 		@import url(https://fonts.googleapis.com/css?family=Roboto);
 
-html {
-  scroll-behavior: smooth;
-}
-	
+    html {
+      position: relative;
+      min-height: 100%;
+    }
 	
 body{
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top;
-  background-size: 100% 500px;
-  padding:0;
-  margin:0;
-  background-attachment: fixed;
-  font-family: Roboto;
-  font-size:120%;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 60px; /* Margin bottom by footer height */
   color:#000000;
   
-  
 }
-
-
-.loginbarButton {
-  position: fixed;  
-  right: 8%;
-  top:2%;
-  padding:0;
-  height: 4%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-size: 16px;
-    font-family: 'Roboto';
-}
-
-.signupbarButton {
-  position: fixed;  
-  right: 2%;
-  top:2%;
-  padding:0;
-  height: 4%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-size: 16px;
-    font-family: 'Roboto';
-}
-
-
-.homebarButton {
-  position: fixed;  
-  left: 1%;
-  top:0%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-family: 'Roboto';
-  font-size: 30px;
-  padding:0;
-  outline:none;
-  
-}
-
-.namebartext {
-  position: fixed;  
-  right: 8%;
-  top:2.5%;
-  height: 5%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  font-family: 'Roboto';
-  font-size: 16px;
-  padding:0;
-  
-}
-
 
 
 div {
     display: block;
-}
-#wrapper {
-
-    width: 100%;
-    height:100%;
-}
-
-
-#first {
-	border:1px solid #dddddd;
-	border-radius:20px;
-	position:relative;
-    float:center;
-    width: 60%;
-	top:15%;
-    height: 85%;
-	margin-bottom:8%;
-	margin-left:20%;
-}
-
-
-#third {
-	position:fixed;
-    width: 100%;
-	bottom:0%;
-    height: 6%;
-	background: #D9D9D9 ;
 }
 
 
@@ -148,41 +53,88 @@ a{
 }
 
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #D9D9D9;
+}
+	
+    .head {
+      font-size: 50px;
+    }
+span { 
+max-width:600px;
+border:1px solid #dddddd;
+  display: inline-block; 
+  background-color: #FFFFFF; 
+    border-radius: 15px;
 
+}
 
 </style>
-   <a href="\"> <button type="submit" class="homebarButton"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></button></a>
-   <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
-   <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
-   <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
-   <div id='namebar' class="namebartext" style="display: none;"></div>
-<div class='fontRoboto'>
-   <body align='center'>
-   <div id="wrapper">
-    <div id="first" align="justify" style="padding-left:20px; padding-right:20px; font-size:20px">
-	<h2 align='center' style='font-size:40;' class='fontRoboto'> About </h2>
-	<br>
-<h4>Lokly the Indian Address Parser</h4> 
+  <!-- Header -->
+
+	<body>
+	<div id='logged_out'>
+	<div class="d-flex">
+  <div class="mr-auto p-2"><a href="\"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></a></div>
+  <div class="p-2"><a href="\loginpage">Login</a></div>
+  <div class="p-2"><a href="\signup" >Sign Up</a></div>
+</div>
+</div>
+
+	<div id='logged_in' style='display:none'>
+	<div class="d-flex">
+  <div class="mr-auto p-2"><a href="\"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></a></div>
+  <div class="p-2" id='namebar'></div>
+  <div class="p-2" id='Logout'><button style='background-color:white; border:none'>Logout </button>
+  </div>
+</div>
+</div>
+	  <br>
+	  <br>
+  <div class="container text-center" >
+    <div class="col-md-12">
+	<span class='border'>
+      <div class="head">
+         About Us
+      </div>
+	  <br>
+      <div class="row">
+        <div class="mr-auto"  style='text-align:justify ; padding:30px;' >
+    
+<h4 align='center'>Lokly the Indian Address Parser</h4> 
 
 Addresses often provide a significant amount of intelligence about the buying and spending habits of a consumer.  In most cases this intelligence cannot be determined from the address as most of the addresses are free flowing text and are not easily parsed.  Faced with these challenges we have created an address parser exclusively for Indian addresses. Lokly the Indian address parser helps you parse an address contained in a free flowing string.  Divide a single address (as string) into separate component parts : house number, street type (bd, street, ..), street name, unit (apt, batiment, ...), zipcode, state, country, city etc. 
 
 Soon we would be adding intelligence around the neighborhoods to help you determine the economic value of the addresses. 
-
-<h4>What is parser based on?</h4>  
+<br>
+<br>
+<h4 align='center'>What is parser based on?</h4>  
 
 The parser is based on natural language processing, parsing technology, and text mining. 
+          </div>
+          </div>
+		  </span>
+          </div>
+          </div>
+  </body>
+<br>
+
+  <footer class="footer">
+    <div class="container-fluid d-flex justify-content-around text-center">
+        <a href='\about' >About Us</a>
+        <a href='\contact'>Contact Us</a>
+        <a href='#' >Terms and Conditions</a>
+
+    </div>
+  </footer>
 
 
-				</div>		
 
-
-	</div>
-	  </div>
-	  <div id='third' >
-	  <div style='padding-top:0.5%; '>
-		<a href='\about' style='padding-right:10%; '>About Us</a><a href='\contact' style='padding-right:10%'>Contact Us</a>Terms and Conditions
-	  </div>
-				</div>		
       <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -191,22 +143,21 @@ The parser is based on natural language processing, parsing technology, and text
   <script type="text/javascript">
 
 
-      $('button#Logout').click(function(){
-       $.ajax({
-            url: "/_logout",
-            type: "GET",
-            success: function(resp){
-				sessionStorage.setItem("app_user",'Guest');
-				$('#Welcome').hide();
-				$('#signupbar').show();
-				$('#namebar').hide();
-				$('#Logout').hide();
-				$('#loginbar').show();
-
-            
-            }
-        });
+    $('#Logout').click(function(){
+     $.ajax({
+          url: "/_logout",
+          type: "GET",
+          success: function(resp){
+      sessionStorage.setItem("app_user",'Guest');
+      $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches.');
+      $('#logged_in').hide();
+      $('#logged_out').show();
+      $('div#Address_output').html('');
+      document.getElementById("search").value = '';
+          
+          }
       });
+    });
 
 		var user = sessionStorage.getItem("app_user");
 	  if (user!='Guest' && user!=null)
@@ -223,13 +174,11 @@ The parser is based on natural language processing, parsing technology, and text
 				}				
 				else				
 				{
-				$('#Welcome').html('Welcome '+resp.name);
-				$('#signupbar').hide();
-				$('#Login_error').hide();
-				$('#loginbar').hide();
-				$('#Logout').show();
-				$('#namebar').html(resp.name);
-				$('#namebar').show();
+      $('#searches').html('You have consumed '+resp.queries+' out of '+resp.limit+' searches. ');
+      $('#Login_error').hide();
+      $('#logged_in').show();
+      $('#logged_out').hide();
+      $('#namebar').html(resp.name);
 				}
 
 

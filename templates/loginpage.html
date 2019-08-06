@@ -1,6 +1,15 @@
 <html>
 
    <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>      
+
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143664123-1"></script>
 <script>
@@ -13,25 +22,17 @@
 <title>
 Login to Lokly
 </title>
-   </head>
 	<style>
 		@import url(https://fonts.googleapis.com/css?family=Roboto);
 
-html {
-  scroll-behavior: smooth;
-}
-	
+    html {
+      position: relative;
+      min-height: 100%;
+    }
 	
 body{
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top;
-  background-size: 100% 500px;
-  padding:0;
-  margin:0;
-  background-attachment: fixed;
-  font-family: Roboto;
-  font-size:120%;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 60px; /* Margin bottom by footer height */
   color:#000000;
   
 }
@@ -61,103 +62,15 @@ body{
 }
 
 
-.nextButton {
-  position: absolute;  
-  width: 30%;
-  top: 80%;
-  right:3%;
-  height: 8%;
-  border: 1px solid #00B4CC;
-  background: #16B647;
-  text-align: center;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #D9D9D9;
 }
-
-.loginButton {
-  position: absolute;  
-  width: 40%;
-  left: 0%;
-  top:80%;
-  padding:0;
-  height: 8%;
-  border: 0px;
-  background: none;
-  text-align: center;
-  color: blue;
-  border-radius: 0px;
-  cursor: pointer;
-  font-size: 20px;
-    font-family: 'Roboto';
-}
-
-.loginbarButton {
-  position: fixed;  
-  right: 8%;
-  top:2%;
-  padding:0;
-  height: 4%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-size: 16px;
-    font-family: 'Roboto';
-}
-
-.signupbarButton {
-  position: fixed;  
-  right: 2%;
-  top:2%;
-  padding:0;
-  height: 4%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-size: 16px;
-    font-family: 'Roboto';
-}
-
-
-.homebarButton {
-  position: fixed;  
-  left: 1%;
-  top:0%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  cursor: pointer;
-  font-family: 'Roboto';
-  font-size: 30px;
-  padding:0;
-  outline:none;
-  
-}
-
-.namebartext {
-  position: fixed;  
-  right: 8%;
-  top:2.5%;
-  height: 5%;
-  border: 0px;
-  background: #ffffff;
-  text-align: center;
-  color: #000000;
-  border-radius: 0px;
-  font-family: 'Roboto';
-  font-size: 16px;
-  padding:0;
-  
-}
+	
 
 
 
@@ -186,15 +99,6 @@ body{
   100% { transform: rotate(360deg); }
 }
 
-/*Resize the wrap to see the search bar change!*/
-}
-.wrap{
-  width: 80%;
-  position: relative;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 
 a{
@@ -210,38 +114,13 @@ a{
   position: relative;
   text-align: center;
   top: 5%;
+  font-size:50px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 div {
     display: block;
-}
-#wrapper {
-
-    width: 100%;
-    height:100%;
-}
-
-
-#first {
-	border:1px solid #dddddd;
-	border-radius:20px;
-	position:relative;
-    float:center;
-    width: 30%;
-	top:20%;
-    height: 60%;
-	margin-left:35%;
-}
-
-
-#third {
-	position:fixed;
-    width: 100%;
-	bottom:0%;
-    height: 6%;
-	background: #D9D9D9 ;
 }
 
 .round{
@@ -254,53 +133,88 @@ font-family: Roboto;
 }
 
 
+span { 
+border:1px solid #dddddd;
+  display: inline-block; 
+  background-color: #FFFFFF; 
+    border-radius: 15px;
 
+} 
 
 
 </style>
-   <a href="\"> <button type="submit" class="homebarButton"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></button></a>
-   <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a>
-   <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a>
-   <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button>
-   <div id='namebar' class="namebartext" style="display: none;"></div>
-<div class='fontRoboto'>
-   <body align='center'>
-   <div id="wrapper">
-    <div id="first">
-		    <h2 style='font-size:40;' align='center' class='fontRoboto'> Login </h2>
+   </head>
+   <!-- <a href="\"> <button type="submit" class="homebarButton"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></button></a> -->
+   <!-- <a href="\loginpage"> <button type="submit" class="loginbarButton" id='loginbar'>Login</button></a> -->
+   <!-- <a href="\signup"> <button type="submit" class="signupbarButton" id='signupbar'>Sign Up</button></a> -->
+   <!-- <button type="submit" class="signupbarButton" id='Logout' style="display: none;">Logout</button> -->
+   <!-- <div id='namebar' class="namebartext" style="display: none;"></div> -->
 
-      <div class="wrap">	
+  <!-- Header -->
 
-			<div class="search">
-			<br>
-			<br>
-			<input type="text" style=' color:black; font-size:90% ;padding-left: 12px;' class="searchTerm round fontRoboto" placeholder="Enter email id" name="email_login" id="email_login">
-			<input type="text" style=' color:black; font-size:90% ;padding-left: 12px; display: none;' class="searchTerm round fontRoboto"  placeholder="Enter OTP" name="otp_login" id="otp_login">
-			<br>
-			<br>
-		<div id='Login_error' style='font-size:18px' ></div>
+	<body>
+	<div id='logged_out'>
+	<div class="d-flex">
+  <div class="mr-auto p-2"><a href="\"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></a></div>
+  <div class="p-2"><a href="\loginpage">Login</a></div>
+  <div class="p-2"><a href="\signup" >Sign Up</a></div>
+</div>
+</div>
 
-			</div>		
-				</div>
-			<button type="submit" class="nextButton" id='Login' style="display: none;">Login</button>
-			<button type="submit" class="nextButton" id='send_otp'>Next</button>
+	<div id='logged_in' style='display:none'>
+	<div class="d-flex">
+  <div class="mr-auto p-2"><a href="\"><img src="/static/logo.png" style='height:80px; width:80px;' alt="logo"></a></div>
+  <div class="p-2" id='namebar'></div>
+  <button class="p-2" id='Logout' style='background-color:white; border:none'>Logout </button>
+</div>
+</div>
+
+
+
+	  <br>
+	  <br>
+  <div class="container text-center">
+   <span class="border">
+	  <br>
+	  <br>
+    <div class="col-md-12"  >
+      <div class="head">
+         Login
+      </div>
+      <div class="row">
+          <div class="input-group text-center" style='padding-left:10px'>
+            <input type="text" style=' color:black ;padding-left: 12px; form-control;' class="searchTerm round fontRoboto" placeholder="Enter email id" name="email_login" id="email_login">
+            <input type="text" style=' color:black;padding-left: 12px; form-control; display:none' class="searchTerm round fontRoboto" placeholder="Enter OTP" name="otp_login" id="otp_login">
+		</div>
+		</div>
+			  <br>
+			  <br>
+			  <br>
+			  <br>
+			<div class="d-flex justify-content-center">
+			<a href="\signup"  class="btn-lg mr-3" id='signup'>Create Account</a>
+			<button type="submit" class="btn btn-success btn-lg" id='send_otp'>Next</button>
+			<button type="submit" class="btn btn-success btn-lg" id='Login' style="display: none;">Login</button>
+
+			</div>
+			  <br>
 				  <div id='loading' class='loader' style="display: none;"></div>
-			<a href="\signup" ><button type="submit" class="loginButton" id='signup'>Create Account</button></a>
+		<div id='Login_error' style='font-size:18px' ></div>
+		</div>
+		<br>
 
-				</div>		
-				<br>
-			<br>
+          </div>
+          </span>
+  </body>
+<br>
+  <footer class="footer">
+    <div class="container-fluid d-flex justify-content-around text-center">
+        <a href='\about' >About Us</a>
+        <a href='\contact'>Contact Us</a>
+        <a href='#' >Terms and Conditions</a>
 
-			<br>
-			<br>
-
-	</div>
-	  </div>
-	  <div id='third' >
-	  <div style='padding-top:0.5%; '>
-		<a href='\about' style='padding-right:10%; '>About Us</a><a href='\contact' style='padding-right:10%'>Contact Us</a>Terms and Conditions
-	  </div>
-				</div>		
+    </div>
+  </footer>
       <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -400,6 +314,5 @@ font-family: Roboto;
 
 
   </script>
-  </body>
    
 </html>
